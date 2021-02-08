@@ -1,0 +1,43 @@
+<div id="btnNovo">
+    <button type="button" class="btn btn-primary" (click)="btnIncluir()">Incluir Cliente</button>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">uf</th>
+            <th scope="col">Nome Fantasia</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Financeira</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of pessoaJuridica; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.uf}}</td>
+            <td>{{item.nomeFantasia | CNPJ}}</td>
+            <td>{{item.cnpj}}</td>
+            <td>
+                <input class="form-check-input" type="radio" value="financeira1" (change)="editarFinanceira(item, 'financeira1');" 
+                [checked]="item.instituicaoFinanceira == 'financeira1'" name="{{i+1}}">
+                <label class="form-check-label" >
+                  financeira1
+                </label>
+                <br/>
+                <input class="form-check-input" type="radio" value="financeira2" [checked]="item.instituicaoFinanceira == 'financeira2'" (change)="editarFinanceira(item, 'financeira2');" 
+                id="rbFinanceira2" name="{{i+1}}">
+                <label class="form-check-label" >
+                  financeira2
+                </label>
+                <br />
+                <input class="form-check-input" type="radio" value="financeira3" [checked]="item.instituicaoFinanceira == 'financeira3'" (change)="editarFinanceira(item, 'financeira3');" 
+                id="rbFinanceira3" name="{{i+1}}">
+                <label class="form-check-label" >
+                  financeira3
+                </label>
+            </td>
+            <td><button type="button" class="btn btn-primary"  [routerLink]="['/pessoaJuridicaNew', item.id]">Editar</button></td>         
+        </tr>
+    </tbody>
+</table>

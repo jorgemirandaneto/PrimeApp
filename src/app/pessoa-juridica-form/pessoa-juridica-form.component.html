@@ -1,0 +1,24 @@
+<form [formGroup]="pessoaJuridica" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="hidden" class="form-control" formControlName="id">
+      </div>
+    <div class="row">
+          <div class="col-md-12">
+            <label for="uf" class="form-label">UF:</label>
+            <input type="text" class="form-control" placeholder="uf" formControlName="uf">
+          </div>
+          <div class="col-md-12">
+            <label for="exampleFormControlInput1" class="form-label">Nome Fantasia:</label>
+            <input type="text" class="form-control" placeholder="nomeFantasia" formControlName="nomeFantasia">
+          </div>
+          <div class="col-md-12">
+            <label for="cnpj" class="form-label">CNPJ:</label>
+            <input type="text" class="form-control" placeholder="CNPJ" formControlName="cnpj" mask="00.000.000/0000-00">
+          </div>
+          <div *ngIf="status == 'edicao'" class="col-md-12">
+            <label for="exampleFormControlInput1" class="form-label">Instituição financeira:</label>
+            <input type="text" readonly class="form-control" formControlName="instituicaoFinanceira">
+          </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-salvar">Submit</button>
+</form>
